@@ -27,3 +27,11 @@ function winEarth(user, computer) {
   }
   return win;
 }
+
+function winWood(user, computer) {
+  var win = false;
+  if (user === "wood" && (computer === "earth" || computer === "water")) {
+    win = true;
+  }
+  return win;
+}

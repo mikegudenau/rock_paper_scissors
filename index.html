@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <section class="human">
+      <div class="player-container">
+        <span class="player-icons" role="img" aria-label="human">🤵🏻‍♂️</span>
+        <h3>Human</h3>
+        <p>Wins: <span id="humanScore">0</span></p>
+      </div>
+    </section>
+    <section class="gameboard">
+      <h1>Rock, Paper, Scissors</h1>
+      <h2>Choose your game!</h2>
+      <h2 class="hidden">Choose your fighter!</h2>
+      <p class="result"></p>
+      <div class="figher-icons">
+        <section class="icons">
+          <div class="classic">
+            <img id="earth" src="./icons/earth.svg" alt="earth" />
+            <img id="water" src="./icons/water.svg" alt="water" />
+            <img id="fire" src="icons/fire.svg" alt="fire" />
+          </div>
+          <div class="advanced">
+            <img id="wood" src="./icons/wood.svg" alt="wood" />
+            <img id="metal" src="./icons/metal.svg" alt="metal" />
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="computer">
+      <div class="player-container">
+        <span role="img" aria-label="computer">🎮</span>
+        <h3>Computer</h3>
+        <p>Wins: <span id="computerScore">0</span></p>
+      </div>
+    </section>
+  </body>
+  <script src="main.js"></script>
+</html>

@@ -1,0 +1,51 @@
+body {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  color: white;
+}
+
+section {
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.human,
+.computer {
+  background-color: rgb(72, 66, 246);
+  width: 25%;
+  min-height: 100vh;
+  font-size: 2rem;
+}
+
+.player-container {
+  margin-top: 50px;
+  
+}
+
+.gameboard {
+  background-color: rgb(103, 117, 247);
+  width: 75%;
+}
+
+img {
+  max-width: 20%;
+  height: auto;
+  margin: 30px 30px;
+}
+
+
+.hidden {
+  display: none;
+}

@@ -35,3 +35,11 @@ function winWood(user, computer) {
   }
   return win;
 }
+
+function winWater(user, computer) {
+  var win = false;
+  if (user === "water" && (computer === "fire" || computer === "metal")) {
+    win = true;
+  }
+  return win;
+}

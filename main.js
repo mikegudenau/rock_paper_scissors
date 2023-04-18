@@ -10,6 +10,27 @@ function createPlayer(name, token) {
 // console.log(createPlayer('Human', '🤵🏻‍♂️'));
 // console.log(createPlayer('Computer', '🎮'));
 
+
+// Game 
+
+function createGame(user, computer) {
+  if (user === computer) {
+    console.log("It's a tie!");
+  } else if (
+    winMetal(user, computer) ||
+    winEarth(user, computer) ||
+    winWood(user, computer) ||
+    winWater(user, computer) ||
+    winFire(user, computer)
+  ) {
+    console.log(`You are the winner!`);
+  } else {
+    console.log("The computer wins!");
+  }
+}
+
+createGame("wood", "fire");
+
 // Win Conditions
 
 function winMetal(user, computer) {

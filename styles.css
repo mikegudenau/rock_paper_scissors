@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+
+section {
+  text-align: center;
+}
+
+.human,
+.computer {
+  background-color: grey;
+  width: 20%;
+}
+
+.gameboard {
+  background-color: rgb(113, 100, 100);
+  width: 80%;
+}
+
+img {
+  max-width: 20%;
+  height: auto;
+}
+
+.hidden {
+  display: none;
+}

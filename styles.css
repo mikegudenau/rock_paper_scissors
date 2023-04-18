@@ -2,6 +2,7 @@ body {
   display: flex;
   width: 100%;
   margin: 0;
+  color: white;
 }
 
 section {
@@ -22,7 +23,7 @@ h3 {
 
 .human,
 .computer {
-  background-color: grey;
+  background-color: rgb(72, 66, 246);
   width: 25%;
   min-height: 100vh;
   font-size: 2rem;
@@ -34,7 +35,7 @@ h3 {
 }
 
 .gameboard {
-  background-color: rgb(113, 100, 100);
+  background-color: rgb(103, 117, 247);
   width: 75%;
 }
 

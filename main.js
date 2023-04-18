@@ -19,3 +19,11 @@ function winMetal(user, computer) {
   }
   return win;
 }
+
+function winEarth(user, computer) {
+  var win = false;
+  if (user === "earth" && (computer === "water" || computer === "fire")) {
+    win = true;
+  }
+  return win;
+}

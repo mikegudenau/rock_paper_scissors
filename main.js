@@ -1,5 +1,14 @@
-var playerChoices = ["metal", "earth", "wood", "water", "fire"];
+// Global Variables
+var earth = document.querySelector("#earth");
+var water = document.querySelector("#water");
+var fire = document.querySelector("#fire");
+var wood = document.querySelector("#wood");
+var metal = document.querySelector("#metal");
+var introChoose = document.querySelector(".intro-choose");
+var fighterChoose = document.querySelector(".fighter-choose");
 
+
+var playerChoices = ["metal", "earth", "wood", "water", "fire"];
 
 function createPlayer(name, token) {
   var player = {
@@ -14,10 +23,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// console.log(playerChoices[getRandomIndex(playerChoices)]);
-
-
-// Game 
+// Game
 
 function createGame(user, computer) {
   if (user === computer) {
@@ -31,19 +37,23 @@ function createGame(user, computer) {
 
 createGame("earth", playerChoices[getRandomIndex(playerChoices)]);
 
-
 // Win Conditions
 
 function determineWinner(user, computer) {
   var winCombinations = {
     metal: ["wood", "earth"],
-    earth: ['water', "fire"],
+    earth: ["water", "fire"],
     wood: ["earth", "water"],
     water: ["fire", "metal"],
-    fire: ["metal", "wood"]
-  }
+    fire: ["metal", "wood"],
+  };
   return winCombinations[user].includes(computer);
 }
 
+function showDOMElement(element) {
+  element.classList.remove("hidden");
+}
 
-
+function hideDOMElement(element) {
+  element.classList.add("hidden");
+}

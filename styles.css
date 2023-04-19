@@ -1,3 +1,7 @@
+* {
+  font-family: 'PT Sans', sans-serif;
+}
+
 body {
   display: flex;
   width: 100%;
@@ -11,6 +15,7 @@ section {
 
 h1 {
   font-size: 4rem;
+  
 }
 
 h2 {
@@ -39,10 +44,34 @@ h3 {
   width: 75%;
 }
 
+.version-wrapper {
+  margin-top: 100px;
+}
+
+.version-wrapper p {
+  font-size: 1.8rem;
+}
+ 
+.classic-version, .advanced-version {
+  background-color: rgb(247, 75, 75);
+  width: 40%;
+  margin: auto;
+  padding: 5px;
+  border-radius: 30px;
+}
+
+.classic-version {
+  margin-bottom: 20px;
+}
+
 img {
   max-width: 20%;
   height: auto;
   margin: 30px 30px;
+}
+
+#water {
+  max-width: 15%;
 }
 
 

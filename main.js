@@ -1,3 +1,6 @@
+var computerChoices = ["metal", "earth", "wood", "water", "fire"];
+
+
 function createPlayer(name, token) {
   var player = {
     name: name,
@@ -7,8 +10,11 @@ function createPlayer(name, token) {
   return player;
 }
 
-// console.log(createPlayer('Human', '🤵🏻‍♂️'));
-// console.log(createPlayer('Computer', '🎮'));
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+// console.log(computerChoices[getRandomIndex(computerChoices)]);
 
 
 // Game 
@@ -23,7 +29,7 @@ function createGame(user, computer) {
   }
 }
 
-createGame("earth", "fire");
+createGame("earth", computerChoices[getRandomIndex(computerChoices)]);
 
 
 // Win Conditions

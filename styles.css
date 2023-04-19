@@ -39,10 +39,22 @@ h3 {
   width: 75%;
 }
 
+
+
+.classic-version, .advanced-version {
+  background-color: green;
+  width: 50%;
+  margin: auto;
+}
+
 img {
   max-width: 20%;
   height: auto;
   margin: 30px 30px;
+}
+
+#water {
+  max-width: 15%;
 }
 
 

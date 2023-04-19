@@ -17,19 +17,34 @@
     </section>
     <section class="gameboard">
       <h1>Rock, Paper, Scissors</h1>
-      <h2>Choose your game!</h2>
-      <h2 class="hidden">Choose your fighter!</h2>
+      <h2 class="intro-choose">Choose your game!</h2>
+      <h2 class="fighter-choose hidden">Choose your fighter!</h2>
       <p class="result"></p>
+
       <div class="figher-icons">
         <section class="icons">
-          <div class="classic">
-            <img id="earth" src="./icons/earth.svg" alt="earth" />
-            <img id="water" src="./icons/water.svg" alt="water" />
-            <img id="fire" src="icons/fire.svg" alt="fire" />
+          <div class="version-choices">
+              <section class="classic-version">
+                <h3>Classic Version</h3>
+                <p>Earth retains Water</p>
+                <p>Water rusts Metal</p>
+                <p>Metal breaks up Earth</p>
+              </section>
+              <section class="advanced-version">
+                <h3>Advanced Version</h3>
+                <p>Earth retains Water and smothers Fire</p>
+                <p>Water puts out Fire and rusts Metal</p>
+                <p>Fire weakens Metal and burns Wood</p>
+                <p>Metal splits Wood and breaks up Earth</p>
+                <p>Water puts out fire and rusts Metal</p>
+              </section>
+            <img class="hidden" id="earth" src="./icons/earth.svg" alt="earth" />
+            <img class="hidden" id="water" src="./icons/water.svg" alt="water" />
+            <img class="hidden" id="fire" src="icons/fire.svg" alt="fire" />
           </div>
           <div class="advanced">
-            <img id="wood" src="./icons/wood.svg" alt="wood" />
-            <img id="metal" src="./icons/metal.svg" alt="metal" />
+            <img class="hidden" id="wood" src="./icons/wood.svg" alt="wood" />
+            <img class="hidden" id="metal" src="./icons/metal.svg" alt="metal" />
           </div>
         </section>
       </div>

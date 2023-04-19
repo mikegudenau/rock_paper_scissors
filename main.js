@@ -1,4 +1,4 @@
-var computerChoices = ["metal", "earth", "wood", "water", "fire"];
+var playerChoices = ["metal", "earth", "wood", "water", "fire"];
 
 
 function createPlayer(name, token) {
@@ -14,7 +14,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// console.log(computerChoices[getRandomIndex(computerChoices)]);
+// console.log(playerChoices[getRandomIndex(playerChoices)]);
 
 
 // Game 
@@ -29,7 +29,7 @@ function createGame(user, computer) {
   }
 }
 
-createGame("earth", computerChoices[getRandomIndex(computerChoices)]);
+createGame("earth", playerChoices[getRandomIndex(playerChoices)]);
 
 
 // Win Conditions

@@ -6,6 +6,11 @@ var wood = document.querySelector("#wood");
 var metal = document.querySelector("#metal");
 var introChoose = document.querySelector(".intro-choose");
 var fighterChoose = document.querySelector(".fighter-choose");
+var humanToken = document.querySelector(".human-token")
+var humanName = document.querySelector(".human-name")
+var computerToken = document.querySelector(".computer-token")
+var computerName = document.querySelector(".computer-name")
+
 
 
 var playerChoices = ["metal", "earth", "wood", "water", "fire"];
@@ -18,6 +23,8 @@ function createPlayer(name, token) {
   };
   return player;
 }
+
+console.log(createPlayer('🤵🏻‍♂️', 'Human'));
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);

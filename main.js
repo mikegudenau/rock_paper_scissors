@@ -6,18 +6,43 @@ var wood = document.querySelector("#wood");
 var metal = document.querySelector("#metal");
 var introChoose = document.querySelector(".intro-choose");
 var fighterChoose = document.querySelector(".fighter-choose");
+
+var classicVersion = document.querySelector(".classic-version");
+var advancedVersion = document.querySelector(".advanced-version");
+var classicGame = document.querySelector(".classic-game")
+var advancedGame = document.querySelector(".advanced-game")
+
 var humanToken = document.querySelector(".human-token");
 var humanName = document.querySelector(".human-name");
 var computerToken = document.querySelector(".computer-token");
 var computerName = document.querySelector(".computer-name");
-var playerContainer = document.querySelectorAll(".player-container")
-
-console.log(playerContainer[0]);
+var playerContainer = document.querySelectorAll(".player-container");
 
 var playerChoices = ["metal", "earth", "wood", "water", "fire"];
 
 // Event Listeners
 window.addEventListener("load", loadPage);
+classicVersion.addEventListener("click", showClassicGame);
+advancedVersion.addEventListener("click", showAdvancedGame);
+
+
+function showClassicGame() {
+  hideDOMElement(introChoose);
+  showDOMElement(fighterChoose);
+  hideDOMElement(classicVersion);
+  hideDOMElement(advancedVersion);
+  showDOMElement(classicGame);
+}
+
+function showAdvancedGame() {
+  hideDOMElement(introChoose);
+  showDOMElement(fighterChoose);
+  hideDOMElement(classicVersion);
+  hideDOMElement(advancedVersion);
+  showDOMElement(classicGame);
+  showDOMElement(advancedGame);
+}
+
 
 function createPlayer(humanToken, computerToken) {
   var players = [
@@ -41,7 +66,7 @@ function loadPage() {
     playerContainer[i].innerHTML = `
     <p class="token" role="img" aria-label="human">${players[i].token}</p>
     <h3 class="name">${players[i].name}</h3>
-    <p>Wins: <span id="score">${players[i].wins}</span></p>`
+    <p>Wins: <span id="score">${players[i].wins}</span></p>`;
   }
 }
 
@@ -81,8 +106,6 @@ function determineWinner(user, computer) {
   };
   return winCombinations[user].includes(computer);
 }
-
-console.log(determineTie("fire", "water"));
 
 function showDOMElement(element) {
   element.classList.remove("hidden");

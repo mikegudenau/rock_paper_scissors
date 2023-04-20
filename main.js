@@ -9,23 +9,30 @@ var fighterChoose = document.querySelector(".fighter-choose");
 
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
-var classicGame = document.querySelector(".classic-game")
-var advancedGame = document.querySelector(".advanced-game")
+var classicGame = document.querySelector(".classic-game");
+var advancedGame = document.querySelector(".advanced-game");
 
 var humanToken = document.querySelector(".human-token");
 var humanName = document.querySelector(".human-name");
 var computerToken = document.querySelector(".computer-token");
 var computerName = document.querySelector(".computer-name");
 var playerContainer = document.querySelectorAll(".player-container");
+var gameBoard = document.querySelector(".gameboard");
+console.log(gameBoard);
 
 var playerChoices = ["metal", "earth", "wood", "water", "fire"];
-var players = [createPlayer('Human', '🤵🏻‍♂️'), createPlayer('Computer', '🎮')];
+var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
 
 // Event Listeners
 window.addEventListener("load", loadPage);
 classicVersion.addEventListener("click", showClassicGame);
 advancedVersion.addEventListener("click", showAdvancedGame);
+gameBoard.addEventListener("click", takeTurn);
 
+function takeTurn(event) {
+  players[0].chosenFighter = event.target.id;
+  console.log(players[0].chosenFighter)
+}
 
 function showClassicGame() {
   hideDOMElement(introChoose);
@@ -46,11 +53,11 @@ function showAdvancedGame() {
 
 function createPlayer(name, token) {
   var players = {
-      name: name,
-      token: token,
-      chosenFighter: null,
-      wins: 0,
-  }
+    name: name,
+    token: token,
+    chosenFighter: null,
+    wins: 0,
+  };
   return players;
 }
 

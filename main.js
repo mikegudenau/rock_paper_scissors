@@ -19,6 +19,7 @@ var computerName = document.querySelector(".computer-name");
 var playerContainer = document.querySelectorAll(".player-container");
 
 var playerChoices = ["metal", "earth", "wood", "water", "fire"];
+var players = [createPlayer('Human', '🤵🏻‍♂️'), createPlayer('Computer', '🎮')];
 
 // Event Listeners
 window.addEventListener("load", loadPage);
@@ -43,25 +44,17 @@ function showAdvancedGame() {
   showDOMElement(advancedGame);
 }
 
-
-function createPlayer(humanToken, computerToken) {
-  var players = [
-    {
-      name: "Human",
-      token: humanToken,
+function createPlayer(name, token) {
+  var players = {
+      name: name,
+      token: token,
+      chosenFighter: null,
       wins: 0,
-    },
-    {
-      name: "Computer",
-      token: computerToken,
-      wins: 0,
-    },
-  ];
+  }
   return players;
 }
 
 function loadPage() {
-  var players = createPlayer("🤵🏻‍♂️", "🎮");
   for (var i = 0; i < playerContainer.length; i++) {
     playerContainer[i].innerHTML = `
     <p class="token" role="img" aria-label="human">${players[i].token}</p>

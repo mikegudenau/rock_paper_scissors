@@ -6,7 +6,10 @@ var wood = document.querySelector("#wood");
 var metal = document.querySelector("#metal");
 var introChoose = document.querySelector(".intro-choose");
 var fighterChoose = document.querySelector(".fighter-choose");
-
+var humanToken = document.querySelector(".human-token")
+var humanName = document.querySelector(".human-name")
+var computerToken = document.querySelector(".computer-token")
+var computerName = document.querySelector(".computer-name")
 
 var playerChoices = ["metal", "earth", "wood", "water", "fire"];
 
@@ -19,6 +22,8 @@ function createPlayer(name, token) {
   return player;
 }
 
+console.log(createPlayer('🤵🏻‍♂️', 'Human'));
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -26,7 +31,7 @@ function getRandomIndex(array) {
 // Game
 
 function createGame(user, computer) {
-  if (user === computer) {
+  if (determineTie(user, computer)) {
     console.log("It's a tie!");
   } else if (determineWinner(user, computer)) {
     console.log(`You are the winner!`);
@@ -37,7 +42,15 @@ function createGame(user, computer) {
 
 createGame("earth", playerChoices[getRandomIndex(playerChoices)]);
 
-// Win Conditions
+// Game Conditions
+
+function determineTie(user, computer) {
+  if (user === computer) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function determineWinner(user, computer) {
   var winCombinations = {
@@ -49,6 +62,8 @@ function determineWinner(user, computer) {
   };
   return winCombinations[user].includes(computer);
 }
+
+console.log(determineTie('fire', 'water'));
 
 function showDOMElement(element) {
   element.classList.remove("hidden");

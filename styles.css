@@ -14,29 +14,31 @@ section {
 }
 
 h1 {
-  font-size: 4rem;
-  
+  font-size: 64px;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 48px;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 64px;
 }
 
-.human,
-.computer {
+.token {
+  font-size: 80px;
+}
+
+#score, p {
+  font-size: 64px;
+}
+
+.player-container {
   background-color: rgb(72, 66, 246);
   width: 25%;
   min-height: 100vh;
   font-size: 2rem;
-}
-
-.player-container {
-  margin-top: 50px;
-  
+  text-align: center;
 }
 
 .gameboard {
@@ -49,7 +51,7 @@ h3 {
 }
 
 .version-wrapper p {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
  
 .classic-version, .advanced-version {

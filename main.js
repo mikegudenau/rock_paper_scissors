@@ -31,24 +31,15 @@ gameBoard.addEventListener("click", takeTurn);
 
 function takeTurn(event) {
   players[0].chosenFighter = event.target.id;
-  console.log(players[0].chosenFighter)
+  players[1].chosenFighter = playerChoices[getRandomIndex(playerChoices)];
+  console.log(players[0].chosenFighter);
+  console.log(players[1].chosenFighter);
 }
 
-function showClassicGame() {
-  hideDOMElement(introChoose);
-  showDOMElement(fighterChoose);
-  hideDOMElement(classicVersion);
-  hideDOMElement(advancedVersion);
-  showDOMElement(classicGame);
-}
-
-function showAdvancedGame() {
-  hideDOMElement(introChoose);
-  showDOMElement(fighterChoose);
-  hideDOMElement(classicVersion);
-  hideDOMElement(advancedVersion);
-  showDOMElement(classicGame);
-  showDOMElement(advancedGame);
+function renderFight(event) {
+  takeTurn(event);
+  createGame(players[0].chosenFighter, players[1].chosenFighter);
+  // console.log(createGame(takeTurn(event), playerChoices[getRandomIndex(playerChoices)]));;
 }
 
 function createPlayer(name, token) {
@@ -80,12 +71,16 @@ function createGame(user, computer) {
     console.log("It's a tie!");
   } else if (determineWinner(user, computer)) {
     console.log(`You are the winner!`);
+    players[0].wins++;
+    console.log(players[0].wins);
   } else {
     console.log("The computer wins!");
+    players[1].wins++;
+    console.log(players[1].wins);
   }
 }
 
-createGame("earth", playerChoices[getRandomIndex(playerChoices)]);
+// createGame(players[0].chosenFighter, players[1].chosenFighter);
 
 // Game Conditions
 function determineTie(user, computer) {
@@ -107,10 +102,30 @@ function determineWinner(user, computer) {
   return winCombinations[user].includes(computer);
 }
 
+// console.log(determineWinner(takeTurn(event), playerChoices[getRandomIndex(playerChoices)]));
+
+//HIDE/SHOW DOM ELEMENTS
 function showDOMElement(element) {
   element.classList.remove("hidden");
 }
 
 function hideDOMElement(element) {
   element.classList.add("hidden");
+}
+
+function showClassicGame() {
+  hideDOMElement(introChoose);
+  showDOMElement(fighterChoose);
+  hideDOMElement(classicVersion);
+  hideDOMElement(advancedVersion);
+  showDOMElement(classicGame);
+}
+
+function showAdvancedGame() {
+  hideDOMElement(introChoose);
+  showDOMElement(fighterChoose);
+  hideDOMElement(classicVersion);
+  hideDOMElement(advancedVersion);
+  showDOMElement(classicGame);
+  showDOMElement(advancedGame);
 }

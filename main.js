@@ -6,11 +6,11 @@ var wood = document.querySelector("#wood");
 var metal = document.querySelector("#metal");
 var introChoose = document.querySelector(".intro-choose");
 var fighterChoose = document.querySelector(".fighter-choose");
+var announceResult = document.querySelector(".announce-result");
 
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
 var classicGame = document.querySelector(".classic-game");
-// console.log(classicGame);
 var advancedGame = document.querySelector(".advanced-game");
 
 var humanToken = document.querySelector(".human-token");
@@ -21,7 +21,7 @@ var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector('.version-wrapper');
 
-var classicChoices = ["metal", "earth", "wood"];
+var classicChoices = ["wood", "water", "fire"];
 var advancedChoices = ["metal", "earth", "wood", "water", "fire"];
 var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
 var game = createGame(players);
@@ -29,16 +29,25 @@ var game = createGame(players);
 // Event Listeners
 window.addEventListener("load", loadPage);
 versionWrapper.addEventListener('click', function (event) {
-  console.log(event);
   updateGameMode(event);
 })
-// classicVersion.addEventListener("click", showClassicGame);
-// advancedVersion.addEventListener("click", showAdvancedGame);
+// gameBoard.addEventListener("click", takeTurn);
+gameBoard.addEventListener("click", function (event) {
+  fight(event);
+  takeTurn(event);
+});
 
-gameBoard.addEventListener("click", takeTurn);
+function fight(event) {
+  takeTurn(event);
+  findWinner();
+  console.log(game);
+  console.log(players);
+  }
 
 function takeTurn(event) {
   game.players[0].chosenFighter = event.target.id;
+  game.players[1].chosenFighter = game.gameMode[getRandomIndex(game.gameMode)];
+  // console.log(game);
 }
 
 function updateGameMode(event) {
@@ -49,7 +58,6 @@ function updateGameMode(event) {
     game.gameMode = advancedChoices;
     showAdvancedGame();
   }
-  console.log(game);
  }
 
 function createPlayer(name, token) {
@@ -84,12 +92,30 @@ function getRandomIndex(array) {
 }
 
 // GameLogic
-function gameLogic(user, computer) {
-  if (determineTie(user, computer)) {
+// function gameLogic(user, computer) {
+//   if (determineTie(user, computer)) {
+//     console.log("It's a tie!");
+//   } else if (determineWinner(user, computer)) {
+//     console.log(`You are the winner!`);
+//   } else {
+//     console.log("The computer wins!");
+//   }
+// }
+
+function findWinner() {
+  if (determineTie(game.players[0].chosenFighter, game.players[1].chosenFighter)) {
+    hideDOMElement(fighterChoose);
     console.log("It's a tie!");
-  } else if (determineWinner(user, computer)) {
+    announceResult.innerText = "It's a Tie";
+  } else if (determineWinner(game.players[0].chosenFighter, game.players[1].chosenFighter)) {
+    hideDOMElement(fighterChoose);
+    announceResult.innerText = "You are the winner!";
+    game.players[0].wins++
     console.log(`You are the winner!`);
   } else {
+    hideDOMElement(fighterChoose);
+    announceResult.innerText = "The computer wins!";
+    game.players[1].wins++
     console.log("The computer wins!");
   }
 }

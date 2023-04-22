@@ -10,6 +10,7 @@ var fighterChoose = document.querySelector(".fighter-choose");
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
 var classicGame = document.querySelector(".classic-game");
+// console.log(classicGame);
 var advancedGame = document.querySelector(".advanced-game");
 
 var humanToken = document.querySelector(".human-token");
@@ -18,20 +19,38 @@ var computerToken = document.querySelector(".computer-token");
 var computerName = document.querySelector(".computer-name");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
+var versionWrapper = document.querySelector('.version-wrapper');
 
-var playerChoices = ["metal", "earth", "wood", "water", "fire"];
+var classicChoices = ["metal", "earth", "wood"];
+var advancedChoices = ["metal", "earth", "wood", "water", "fire"];
 var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
+var game = createGame(players);
 
 // Event Listeners
 window.addEventListener("load", loadPage);
-classicVersion.addEventListener("click", showClassicGame);
-advancedVersion.addEventListener("click", showAdvancedGame);
+versionWrapper.addEventListener('click', function (event) {
+  console.log(event);
+  updateGameMode(event);
+})
+// classicVersion.addEventListener("click", showClassicGame);
+// advancedVersion.addEventListener("click", showAdvancedGame);
+
 gameBoard.addEventListener("click", takeTurn);
 
 function takeTurn(event) {
-  players[0].chosenFighter = event.target.id;
-  console.log(createGame(players));
+  game.players[0].chosenFighter = event.target.id;
 }
+
+function updateGameMode(event) {
+  if (event.target.className === "classic-version") {
+    game.gameMode = classicChoices;
+    showClassicGame();
+  } else if (event.target.className === "advanced-version") {
+    game.gameMode = advancedChoices;
+    showAdvancedGame();
+  }
+  console.log(game);
+ }
 
 function createPlayer(name, token) {
   var players = {
@@ -51,8 +70,6 @@ function createGame(playersArray) {
   return game;
 }
 
-console.log(doNow());
-
 function loadPage() {
   for (var i = 0; i < playerContainer.length; i++) {
     playerContainer[i].innerHTML = `
@@ -65,8 +82,6 @@ function loadPage() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-
 
 // GameLogic
 function gameLogic(user, computer) {

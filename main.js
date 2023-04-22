@@ -20,7 +20,7 @@ var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector('.version-wrapper');
 
-var classicChoices = ["metal", "earth", "wood"];
+var classicChoices = ["wood", "water", "fire"];
 var advancedChoices = ["metal", "earth", "wood", "water", "fire"];
 var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
 var game = createGame(players);
@@ -30,11 +30,12 @@ window.addEventListener("load", loadPage);
 versionWrapper.addEventListener('click', function (event) {
   updateGameMode(event);
 })
-
 gameBoard.addEventListener("click", takeTurn);
 
 function takeTurn(event) {
   game.players[0].chosenFighter = event.target.id;
+  game.players[1].chosenFighter = game.gameMode[getRandomIndex(game.gameMode)];
+  console.log(game);
 }
 
 function updateGameMode(event) {
@@ -79,7 +80,17 @@ function getRandomIndex(array) {
 }
 
 // GameLogic
-function gameLogic(user, computer) {
+// function gameLogic(user, computer) {
+//   if (determineTie(user, computer)) {
+//     console.log("It's a tie!");
+//   } else if (determineWinner(user, computer)) {
+//     console.log(`You are the winner!`);
+//   } else {
+//     console.log("The computer wins!");
+//   }
+// }
+
+function gameLogic() {
   if (determineTie(user, computer)) {
     console.log("It's a tie!");
   } else if (determineWinner(user, computer)) {

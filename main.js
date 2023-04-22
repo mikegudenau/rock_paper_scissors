@@ -7,6 +7,7 @@ var metal = document.querySelector("#metal");
 var introChoose = document.querySelector(".intro-choose");
 var fighterChoose = document.querySelector(".fighter-choose");
 var announceResult = document.querySelector(".announce-result");
+var icons = document.querySelector(".icons");
 
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
@@ -40,6 +41,7 @@ gameBoard.addEventListener("click", function (event) {
 function fight(event) {
   takeTurn(event);
   findWinner();
+  renderChosenFighter()
   console.log(game);
   console.log(players);
   }
@@ -87,9 +89,15 @@ function loadPage() {
   }
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function renderChosenFighter() {
+  icons.innerHTML = "";
+  for (var i = 0; i < 2; i++) {
+    icons.innerHTML += `
+    <img id="${game.players[i].chosenFighter}" src="./icons/${game.players[i].chosenFighter}.svg" alt="water" />
+    `
+  }
 }
+
 
 // GameLogic
 // function gameLogic(user, computer) {
@@ -138,6 +146,10 @@ function determineWinner(user, computer) {
     fire: ["metal", "wood"],
   };
   return winCombinations[user].includes(computer);
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
 //HIDE/SHOW DOM ELEMENTS

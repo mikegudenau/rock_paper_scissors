@@ -18,7 +18,6 @@ var computerToken = document.querySelector(".computer-token");
 var computerName = document.querySelector(".computer-name");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
-console.log(gameBoard);
 
 var playerChoices = ["metal", "earth", "wood", "water", "fire"];
 var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
@@ -31,9 +30,7 @@ gameBoard.addEventListener("click", takeTurn);
 
 function takeTurn(event) {
   players[0].chosenFighter = event.target.id;
-  players[1].chosenFighter = playerChoices[getRandomIndex(playerChoices)];
-  console.log(players[0].chosenFighter);
-  console.log(players[1].chosenFighter);
+  console.log(createGame(players));
 }
 
 function createPlayer(name, token) {
@@ -51,9 +48,10 @@ function createGame(playersArray) {
     players: playersArray,
     gameMode: null
   }
-  return game
+  return game;
 }
 
+console.log(doNow());
 
 function loadPage() {
   for (var i = 0; i < playerContainer.length; i++) {

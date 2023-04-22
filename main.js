@@ -8,6 +8,8 @@ var introChoose = document.querySelector(".intro-choose");
 var fighterChoose = document.querySelector(".fighter-choose");
 var announceResult = document.querySelector(".announce-result");
 var icons = document.querySelector(".icons");
+var score = document.querySelectorAll("#score");
+console.log(score);
 
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
@@ -20,7 +22,7 @@ var computerToken = document.querySelector(".computer-token");
 var computerName = document.querySelector(".computer-name");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
-var versionWrapper = document.querySelector('.version-wrapper');
+var versionWrapper = document.querySelector(".version-wrapper");
 
 var classicChoices = ["wood", "water", "fire"];
 var advancedChoices = ["metal", "earth", "wood", "water", "fire"];
@@ -28,10 +30,10 @@ var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Compute
 var game = createGame(players);
 
 // Event Listeners
-window.addEventListener("load", loadPage);
-versionWrapper.addEventListener('click', function (event) {
+window.addEventListener("load", renderPlayerData);
+versionWrapper.addEventListener("click", function (event) {
   updateGameMode(event);
-})
+});
 // gameBoard.addEventListener("click", takeTurn);
 gameBoard.addEventListener("click", function (event) {
   fight(event);
@@ -41,15 +43,13 @@ gameBoard.addEventListener("click", function (event) {
 function fight(event) {
   takeTurn(event);
   findWinner();
-  renderChosenFighter()
-  console.log(game);
-  console.log(players);
-  }
+  renderChosenFighter();
+  renderPlayerData();
+}
 
 function takeTurn(event) {
   game.players[0].chosenFighter = event.target.id;
   game.players[1].chosenFighter = game.gameMode[getRandomIndex(game.gameMode)];
-  // console.log(game);
 }
 
 function updateGameMode(event) {
@@ -60,7 +60,7 @@ function updateGameMode(event) {
     game.gameMode = advancedChoices;
     showAdvancedGame();
   }
- }
+}
 
 function createPlayer(name, token) {
   var players = {
@@ -75,18 +75,9 @@ function createPlayer(name, token) {
 function createGame(playersArray) {
   var game = {
     players: playersArray,
-    gameMode: null
-  }
+    gameMode: null,
+  };
   return game;
-}
-
-function loadPage() {
-  for (var i = 0; i < playerContainer.length; i++) {
-    playerContainer[i].innerHTML = `
-    <p class="token" role="img" aria-label="human">${players[i].token}</p>
-    <h3 class="name">${players[i].name}</h3>
-    <p>Wins: <span id="score">${players[i].wins}</span></p>`;
-  }
 }
 
 function renderChosenFighter() {
@@ -94,37 +85,38 @@ function renderChosenFighter() {
   for (var i = 0; i < 2; i++) {
     icons.innerHTML += `
     <img id="${game.players[i].chosenFighter}" src="./icons/${game.players[i].chosenFighter}.svg" alt="water" />
-    `
+    `;
   }
 }
 
-
-// GameLogic
-// function gameLogic(user, computer) {
-//   if (determineTie(user, computer)) {
-//     console.log("It's a tie!");
-//   } else if (determineWinner(user, computer)) {
-//     console.log(`You are the winner!`);
-//   } else {
-//     console.log("The computer wins!");
-//   }
-// }
+function renderPlayerData() {
+  for (var i = 0; i < playerContainer.length; i++) {
+    playerContainer[i].innerHTML = `
+    <p class="token" role="img" aria-label="human">${game.players[i].token}</p>
+    <h3 class="name">${game.players[i].name}</h3>
+    <p>Wins: <span id="score">${game.players[i].wins}</span></p>`;
+  }
+}
 
 function findWinner() {
-  if (determineTie(game.players[0].chosenFighter, game.players[1].chosenFighter)) {
+  if (
+    determineTie(game.players[0].chosenFighter, game.players[1].chosenFighter)
+  ) {
     hideDOMElement(fighterChoose);
-    console.log("It's a tie!");
     announceResult.innerText = "It's a Tie";
-  } else if (determineWinner(game.players[0].chosenFighter, game.players[1].chosenFighter)) {
+  } else if (
+    determineWinner(
+      game.players[0].chosenFighter,
+      game.players[1].chosenFighter
+    )
+  ) {
     hideDOMElement(fighterChoose);
     announceResult.innerText = "You are the winner!";
-    game.players[0].wins++
-    console.log(`You are the winner!`);
+    game.players[0].wins++;
   } else {
     hideDOMElement(fighterChoose);
     announceResult.innerText = "The computer wins!";
-    game.players[1].wins++
-    console.log("The computer wins!");
+    game.players[1].wins++;
   }
 }
 

@@ -36,12 +36,6 @@ function takeTurn(event) {
   console.log(players[1].chosenFighter);
 }
 
-function renderFight(event) {
-  takeTurn(event);
-  createGame(players[0].chosenFighter, players[1].chosenFighter);
-  // console.log(createGame(takeTurn(event), playerChoices[getRandomIndex(playerChoices)]));;
-}
-
 function createPlayer(name, token) {
   var players = {
     name: name,
@@ -51,6 +45,15 @@ function createPlayer(name, token) {
   };
   return players;
 }
+
+function createGame(playersArray) {
+  var game = {
+    players: playersArray,
+    gameMode: null
+  }
+  return game
+}
+
 
 function loadPage() {
   for (var i = 0; i < playerContainer.length; i++) {
@@ -65,22 +68,18 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// Game
-function createGame(user, computer) {
+
+
+// GameLogic
+function gameLogic(user, computer) {
   if (determineTie(user, computer)) {
     console.log("It's a tie!");
   } else if (determineWinner(user, computer)) {
     console.log(`You are the winner!`);
-    players[0].wins++;
-    console.log(players[0].wins);
   } else {
     console.log("The computer wins!");
-    players[1].wins++;
-    console.log(players[1].wins);
   }
 }
-
-// createGame(players[0].chosenFighter, players[1].chosenFighter);
 
 // Game Conditions
 function determineTie(user, computer) {
@@ -101,8 +100,6 @@ function determineWinner(user, computer) {
   };
   return winCombinations[user].includes(computer);
 }
-
-// console.log(determineWinner(takeTurn(event), playerChoices[getRandomIndex(playerChoices)]));
 
 //HIDE/SHOW DOM ELEMENTS
 function showDOMElement(element) {

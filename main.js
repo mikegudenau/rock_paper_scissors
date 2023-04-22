@@ -80,15 +80,6 @@ function createGame(playersArray) {
   return game;
 }
 
-// function loadPage() {
-//   for (var i = 0; i < playerContainer.length; i++) {
-//     playerContainer[i].innerHTML = `
-//     <p class="token" role="img" aria-label="human">${game.players[i].token}</p>
-//     <h3 class="name">${game.players[i].name}</h3>
-//     <p>Wins: <span id="score">${game.players[i].wins}</span></p>`;
-//   }
-// }
-
 function renderChosenFighter() {
   icons.innerHTML = "";
   for (var i = 0; i < 2; i++) {

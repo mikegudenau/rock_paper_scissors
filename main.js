@@ -10,7 +10,6 @@ var fighterChoose = document.querySelector(".fighter-choose");
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
 var classicGame = document.querySelector(".classic-game");
-// console.log(classicGame);
 var advancedGame = document.querySelector(".advanced-game");
 
 var humanToken = document.querySelector(".human-token");
@@ -29,11 +28,8 @@ var game = createGame(players);
 // Event Listeners
 window.addEventListener("load", loadPage);
 versionWrapper.addEventListener('click', function (event) {
-  console.log(event);
   updateGameMode(event);
 })
-// classicVersion.addEventListener("click", showClassicGame);
-// advancedVersion.addEventListener("click", showAdvancedGame);
 
 gameBoard.addEventListener("click", takeTurn);
 
@@ -49,7 +45,6 @@ function updateGameMode(event) {
     game.gameMode = advancedChoices;
     showAdvancedGame();
   }
-  console.log(game);
  }
 
 function createPlayer(name, token) {

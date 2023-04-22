@@ -9,7 +9,6 @@ var fighterChoose = document.querySelector(".fighter-choose");
 var announceResult = document.querySelector(".announce-result");
 var icons = document.querySelector(".icons");
 var score = document.querySelectorAll("#score");
-console.log(score);
 
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
@@ -45,6 +44,7 @@ function fight(event) {
   findWinner();
   renderChosenFighter();
   renderPlayerData();
+  setTimeout(renderResetBoard, 2500);
 }
 
 function takeTurn(event) {
@@ -95,6 +95,28 @@ function renderPlayerData() {
     <p class="token" role="img" aria-label="human">${game.players[i].token}</p>
     <h3 class="name">${game.players[i].name}</h3>
     <p>Wins: <span id="score">${game.players[i].wins}</span></p>`;
+  }
+}
+
+function renderResetBoard() {
+  announceResult.innerText = ''
+  showDOMElement(fighterChoose);
+  if (game.gameMode === classicChoices) {
+    icons.innerHTML = `
+     <img id="wood" src="./icons/wood.svg" alt="wood" />
+     <img id="water" src="./icons/water.svg" alt="water" />
+     <img id="fire" src="icons/fire.svg" alt="fire" />
+    `
+  } else {
+    icons.innerHTML = `
+    <img id="wood" src="./icons/wood.svg" alt="wood" />
+    <img id="water" src="./icons/water.svg" alt="water" />
+    <img id="fire" src="icons/fire.svg" alt="fire" />
+    <div>
+      <img id="earth" src="./icons/earth.svg" alt="earth" />
+      <img id="metal" src="./icons/metal.svg" alt="metal" />
+    <div>
+    `
   }
 }
 

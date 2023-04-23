@@ -12,9 +12,10 @@
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
-    <div class="player-container">
-      </section>
-    </div>
+    <section class="human">
+      <div class="player-container"></div>
+      <button class="change-button">Change Game?</button>
+    </section>
     <section class="gameboard">
       <h1>Rock, Paper, Scissors</h1>
       <h2 class="intro-choose">Choose your game!</h2>
@@ -29,11 +30,11 @@
         </section>
         <section class="advanced-version">
           <h3 class="advanced-version">Advanced Version</h3>
-          <p class="advanced-version">Earth retains Water and smothers Fire</p>
-          <p class="advanced-version">Wood absorbs Water and restrains Earth</p>
-          <p class="advanced-version">Fire weakens Metal and burns Wood</p>
-          <p class="advanced-version">Metal splits Wood and breaks up Earth</p>
-          <p class="advanced-version">Water puts out fire and rusts Metal</p>
+          <p class="advanced-version">Earth > Water and Fire</p>
+          <p class="advanced-version">Wood > Water and Earth</p>
+          <p class="advanced-version">Fire > Metal and Wood</p>
+          <p class="advanced-version">Metal > Wood and Earth</p>
+          <p class="advanced-version">Water > Fire and Metal</p>
         </section>
       </div>
       <div class="figher-icons">
@@ -50,8 +51,10 @@
         </section>
       </div>
     </section> 
+      <section class="computer">
       <div class="player-container">
       </div>
+    </section>
   </body>
   <script src="main.js"></script>
 </html>

@@ -9,6 +9,7 @@ var fighterChoose = document.querySelector(".fighter-choose");
 var announceResult = document.querySelector(".announce-result");
 var icons = document.querySelector(".icons");
 var score = document.querySelectorAll("#score");
+var changeButton = document.querySelector(".change-button");
 
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
@@ -94,7 +95,8 @@ function renderPlayerData() {
     playerContainer[i].innerHTML = `
     <p class="token" role="img" aria-label="human">${game.players[i].token}</p>
     <h3 class="name">${game.players[i].name}</h3>
-    <p>Wins: <span id="score">${game.players[i].wins}</span></p>`;
+    <p class="wins">Wins: <span id="score">${game.players[i].wins}</span></p>
+    `;
   }
 }
 

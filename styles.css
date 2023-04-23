@@ -47,6 +47,7 @@ h3 {
   border-style: none;
   margin-top: 50px;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .human, .computer {
@@ -73,13 +74,13 @@ h3 {
   background-color: rgb(5, 92, 26);
   width: 50%;
   margin: auto;
-  padding: 2px;
+  /* padding: 2px; */
   border-radius: 30px;
   cursor: pointer;
 }
 
 .classic-version {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 img {

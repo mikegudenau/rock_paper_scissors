@@ -36,9 +36,10 @@ versionWrapper.addEventListener("click", function (event) {
 });
 // gameBoard.addEventListener("click", takeTurn);
 gameBoard.addEventListener("click", function (event) {
-  fight(event);
+  // fight(event);
   takeTurn(event);
 });
+changeButton.addEventListener("click", changeGame);
 
 function fight(event) {
   takeTurn(event);
@@ -166,6 +167,13 @@ function determineWinner(user, computer) {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function changeGame() {
+  hideDOMElement(fighterChoose);
+  showDOMElement(introChoose);
+  showDOMElement(classicVersion);
+  showDOMElement(advancedVersion);
 }
 
 //HIDE/SHOW DOM ELEMENTS

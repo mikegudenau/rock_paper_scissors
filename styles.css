@@ -70,6 +70,7 @@ h3 {
   border-radius: 30px;
   cursor: pointer;
   margin: auto;
+  padding: 5px 10px 5px;
 }
 
 .classic {

@@ -1,33 +1,21 @@
 // Global Variables
-var earth = document.querySelector("#earth");
-var water = document.querySelector("#water");
-var fire = document.querySelector("#fire");
-var wood = document.querySelector("#wood");
-var metal = document.querySelector("#metal");
+var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
+var game = createGame(players);
+var classicChoices = ["wood", "water", "fire"];
+var advancedChoices = ["metal", "earth", "wood", "water", "fire"];
 var introChoose = document.querySelector(".intro-choose");
 var fighterChoose = document.querySelector(".fighter-choose");
 var announceResult = document.querySelector(".announce-result");
 var icons = document.querySelector(".icons");
 var score = document.querySelectorAll("#score");
 var changeButton = document.querySelector(".change-button");
-
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
 var classicGame = document.querySelector(".classic-game");
 var advancedGame = document.querySelector(".advanced-game");
-
-var humanToken = document.querySelector(".human-token");
-var humanName = document.querySelector(".human-name");
-var computerToken = document.querySelector(".computer-token");
-var computerName = document.querySelector(".computer-name");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector(".version-wrapper");
-
-var classicChoices = ["wood", "water", "fire"];
-var advancedChoices = ["metal", "earth", "wood", "water", "fire"];
-var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
-var game = createGame(players);
 
 // Event Listeners
 window.addEventListener("load", renderPlayerData);
@@ -91,7 +79,6 @@ function takeTurn(event) {
   } else {
     game.players[1].chosenFighter = advancedChoices[getRandomIndex(advancedChoices)];
   }
-  console.log(game);
 }
 
 function renderChosenFighter() {
@@ -123,9 +110,9 @@ function renderClassicGame() {
 
 function renderAdvancedGame() {
   icons.innerHTML = `
-    <img id="wood" src="./icons/wood.svg" alt="wood" />
-    <img id="water" src="./icons/water.svg" alt="water" />
-    <img id="fire" src="icons/fire.svg" alt="fire" />
+  <img id="wood" src="./icons/wood.svg" alt="wood" />
+  <img id="water" src="./icons/water.svg" alt="water" />
+  <img id="fire" src="icons/fire.svg" alt="fire" />
     <div>
       <img id="earth" src="./icons/earth.svg" alt="earth" />
       <img id="metal" src="./icons/metal.svg" alt="metal" />
@@ -145,16 +132,11 @@ function renderResetBoard() {
 
 function findWinner() {
   if (
-    determineTie(game.players[0].chosenFighter, game.players[1].chosenFighter)
-  ) {
+    determineTie(game.players[0].chosenFighter, game.players[1].chosenFighter)) {
     hideDOMElement(fighterChoose);
     announceResult.innerText = "It's a Tie";
   } else if (
-    determineWinner(
-      game.players[0].chosenFighter,
-      game.players[1].chosenFighter
-    )
-  ) {
+    determineWinner(game.players[0].chosenFighter, game.players[1].chosenFighter)) {
     hideDOMElement(fighterChoose);
     announceResult.innerText = "You are the winner!";
     game.players[0].wins++;
@@ -165,7 +147,6 @@ function findWinner() {
   }
 }
 
-// Game Conditions
 function determineTie(user, computer) {
   if (user === computer) {
     return true;

@@ -51,7 +51,12 @@ function fight(event) {
 
 function takeTurn(event) {
   game.players[0].chosenFighter = event.target.id;
-  game.players[1].chosenFighter = game.gameMode[getRandomIndex(game.gameMode)];
+  if (game.gameMode === 'classic') {
+    game.players[1].chosenFighter = classicChoices[getRandomIndex(classicChoices)];
+  } else {
+    game.players[1].chosenFighter = advancedChoices[getRandomIndex(advancedChoices)];
+  }
+  console.log(game);
 }
 
 function updateGameMode(event) {
@@ -63,7 +68,6 @@ function updateGameMode(event) {
     game.gameMode = 'advanced';
     showAdvancedGame();
   }
-  console.log(game.gameMode);
 }
 
 function createPlayer(name, token) {

@@ -57,12 +57,13 @@ function takeTurn(event) {
 function updateGameMode(event) {
   showDOMElement(changeButton);
   if (event.target.className === "classic-version") {
-    game.gameMode = classicChoices;
+    game.gameMode = 'classic';
     showClassicGame();
   } else if (event.target.className === "advanced-version") {
-    game.gameMode = advancedChoices;
+    game.gameMode = 'advanced';
     showAdvancedGame();
   }
+  console.log(game.gameMode);
 }
 
 function createPlayer(name, token) {

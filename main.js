@@ -36,7 +36,7 @@ versionWrapper.addEventListener("click", function (event) {
 });
 // gameBoard.addEventListener("click", takeTurn);
 gameBoard.addEventListener("click", function (event) {
-  // fight(event);
+  fight(event);
   takeTurn(event);
 });
 changeButton.addEventListener("click", changeGame);
@@ -55,6 +55,7 @@ function takeTurn(event) {
 }
 
 function updateGameMode(event) {
+  showDOMElement(changeButton);
   if (event.target.className === "classic-version") {
     game.gameMode = classicChoices;
     showClassicGame();
@@ -174,6 +175,9 @@ function changeGame() {
   showDOMElement(introChoose);
   showDOMElement(classicVersion);
   showDOMElement(advancedVersion);
+  // hideDOMElement(classicGame);
+  // hideDOMElement(advancedGame);
+  hideDOMElement(changeButton);
 }
 
 //HIDE/SHOW DOM ELEMENTS

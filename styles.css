@@ -4,7 +4,6 @@
 
 body {
   display: flex;
-  /* width: 100%; */
   margin: 0;
   color: white;
 }
@@ -52,35 +51,22 @@ h3 {
 
 .human, .computer {
   background-color: rgb(72, 66, 246);
-  /* width: 25%; */
   width: 350px;
   min-height: 100vh;
-  /* font-size: 2rem; */
   text-align: center;
 }
 
 .gameboard {
   background-color: rgb(103, 117, 247);
-  /* width: 75%; */
   flex: 1;
 }
 
-/* .version-wrapper {
-  margin-top: 100px;
-} */
-
- 
 .classic-version, .advanced-version {
   background-color: rgb(5, 92, 26);
   width: 50%;
   margin: auto;
-  /* padding: 2px; */
   border-radius: 30px;
   cursor: pointer;
-}
-
-.classic-version {
-  /* margin-bottom: 20px; */
 }
 
 img {
@@ -93,7 +79,6 @@ img {
 #water {
   max-width: 15%;
 }
-
 
 .hidden {
   display: none;

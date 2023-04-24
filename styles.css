@@ -53,7 +53,6 @@ h3 {
   background-color: rgb(72, 66, 246);
   width: 350px;
   min-height: 100vh;
-  text-align: center;
 }
 
 .gameboard {
@@ -61,12 +60,29 @@ h3 {
   flex: 1;
 }
 
-.classic-version, .advanced-version {
+.version-wrapper p {
+  font-size: 20px;
+}
+
+.classic, .advanced {
   background-color: rgb(5, 92, 26);
-  width: 50%;
-  margin: auto;
+  max-width: 50%;
   border-radius: 30px;
   cursor: pointer;
+  margin: auto;
+  padding: 5px 10px 5px;
+}
+
+.classic {
+  margin-bottom: 75px;
+}
+
+.advanced:hover {
+  background-color:rgb(24, 123, 4);
+}
+
+.classic:hover {
+  background-color:rgb(24, 123, 4);
 }
 
 img {

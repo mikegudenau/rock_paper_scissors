@@ -71,13 +71,14 @@ function getRandomIndex(array) {
 }
 
 function updateGameMode(event) {
-  showDOMElement(changeButton);
   if (event.target.className === "classic-version") {
     game.gameMode = 'classic';
+    showDOMElement(changeButton);
     showClassicGame();
     renderClassicGame()
   } else if (event.target.className === "advanced-version") {
     game.gameMode = 'advanced';
+    showDOMElement(changeButton);
     showAdvancedGame();
     renderAdvancedGame()
   }
@@ -193,7 +194,6 @@ function changeGame() {
   hideDOMElement(changeButton);
 }
 
-//HIDE/SHOW DOM ELEMENTS
 function showDOMElement(element) {
   element.classList.remove("hidden");
 }

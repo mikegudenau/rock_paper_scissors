@@ -34,41 +34,11 @@ window.addEventListener("load", renderPlayerData);
 versionWrapper.addEventListener("click", function (event) {
   updateGameMode(event);
 });
-// gameBoard.addEventListener("click", takeTurn);
 gameBoard.addEventListener("click", function (event) {
   fight(event);
   takeTurn(event);
 });
 changeButton.addEventListener("click", changeGame);
-
-function fight(event) {
-  takeTurn(event);
-  findWinner();
-  renderChosenFighter();
-  renderPlayerData();
-  setTimeout(renderResetBoard, 2500);
-}
-
-function takeTurn(event) {
-  game.players[0].chosenFighter = event.target.id;
-  if (game.gameMode === 'classic') {
-    game.players[1].chosenFighter = classicChoices[getRandomIndex(classicChoices)];
-  } else {
-    game.players[1].chosenFighter = advancedChoices[getRandomIndex(advancedChoices)];
-  }
-  console.log(game);
-}
-
-function updateGameMode(event) {
-  showDOMElement(changeButton);
-  if (event.target.className === "classic-version") {
-    game.gameMode = 'classic';
-    showClassicGame();
-  } else if (event.target.className === "advanced-version") {
-    game.gameMode = 'advanced';
-    showAdvancedGame();
-  }
-}
 
 function createPlayer(name, token) {
   var players = {
@@ -86,6 +56,41 @@ function createGame(playersArray) {
     gameMode: null,
   };
   return game;
+}
+
+function fight(event) {
+  takeTurn(event);
+  findWinner();
+  renderChosenFighter();
+  renderPlayerData();
+  setTimeout(renderResetBoard, 1000);
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function updateGameMode(event) {
+  showDOMElement(changeButton);
+  if (event.target.className === "classic-version") {
+    game.gameMode = 'classic';
+    showClassicGame();
+    renderClassicGame()
+  } else if (event.target.className === "advanced-version") {
+    game.gameMode = 'advanced';
+    showAdvancedGame();
+    renderAdvancedGame()
+  }
+}
+
+function takeTurn(event) {
+  game.players[0].chosenFighter = event.target.id;
+  if (game.gameMode === 'classic') {
+    game.players[1].chosenFighter = classicChoices[getRandomIndex(classicChoices)];
+  } else {
+    game.players[1].chosenFighter = advancedChoices[getRandomIndex(advancedChoices)];
+  }
+  console.log(game);
 }
 
 function renderChosenFighter() {
@@ -107,17 +112,16 @@ function renderPlayerData() {
   }
 }
 
-function renderResetBoard() {
-  announceResult.innerText = ''
-  showDOMElement(fighterChoose);
-  if (game.gameMode === classicChoices) {
-    icons.innerHTML = `
-     <img id="wood" src="./icons/wood.svg" alt="wood" />
-     <img id="water" src="./icons/water.svg" alt="water" />
-     <img id="fire" src="icons/fire.svg" alt="fire" />
-    `
-  } else {
-    icons.innerHTML = `
+function renderClassicGame() {
+  icons.innerHTML = `
+  <img id="wood" src="./icons/wood.svg" alt="wood" />
+  <img id="water" src="./icons/water.svg" alt="water" />
+  <img id="fire" src="icons/fire.svg" alt="fire" />
+  `;
+}
+
+function renderAdvancedGame() {
+  icons.innerHTML = `
     <img id="wood" src="./icons/wood.svg" alt="wood" />
     <img id="water" src="./icons/water.svg" alt="water" />
     <img id="fire" src="icons/fire.svg" alt="fire" />
@@ -126,6 +130,15 @@ function renderResetBoard() {
       <img id="metal" src="./icons/metal.svg" alt="metal" />
     <div>
     `
+}
+
+function renderResetBoard() {
+  announceResult.innerText = ''
+  showDOMElement(fighterChoose);
+  if (game.gameMode === 'classic') {
+    renderClassicGame();
+  } else {
+    renderAdvancedGame();
   }
 }
 
@@ -171,17 +184,12 @@ function determineWinner(user, computer) {
   return winCombinations[user].includes(computer);
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
 function changeGame() {
+  icons.innerHTML = '';
   hideDOMElement(fighterChoose);
   showDOMElement(introChoose);
   showDOMElement(classicVersion);
   showDOMElement(advancedVersion);
-  // hideDOMElement(classicGame);
-  // hideDOMElement(advancedGame);
   hideDOMElement(changeButton);
 }
 
@@ -199,7 +207,6 @@ function showClassicGame() {
   showDOMElement(fighterChoose);
   hideDOMElement(classicVersion);
   hideDOMElement(advancedVersion);
-  showDOMElement(classicGame);
 }
 
 function showAdvancedGame() {
@@ -207,6 +214,4 @@ function showAdvancedGame() {
   showDOMElement(fighterChoose);
   hideDOMElement(classicVersion);
   hideDOMElement(advancedVersion);
-  showDOMElement(classicGame);
-  showDOMElement(advancedGame);
 }

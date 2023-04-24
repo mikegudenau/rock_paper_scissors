@@ -69,6 +69,10 @@ h3 {
   cursor: pointer;
 }
 
+.classic {
+  margin-bottom: 30px;
+}
+
 img {
   max-width: 20%;
   height: auto;

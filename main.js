@@ -9,6 +9,7 @@ var fighterChoose = document.querySelector(".fighter-choose");
 var announceResult = document.querySelector(".announce-result");
 var icons = document.querySelector(".icons");
 var score = document.querySelectorAll("#score");
+var changeButton = document.querySelector(".change-button");
 
 var classicVersion = document.querySelector(".classic-version");
 var advancedVersion = document.querySelector(".advanced-version");
@@ -38,6 +39,7 @@ gameBoard.addEventListener("click", function (event) {
   fight(event);
   takeTurn(event);
 });
+changeButton.addEventListener("click", changeGame);
 
 function fight(event) {
   takeTurn(event);
@@ -53,6 +55,7 @@ function takeTurn(event) {
 }
 
 function updateGameMode(event) {
+  showDOMElement(changeButton);
   if (event.target.className === "classic-version") {
     game.gameMode = classicChoices;
     showClassicGame();
@@ -94,7 +97,8 @@ function renderPlayerData() {
     playerContainer[i].innerHTML = `
     <p class="token" role="img" aria-label="human">${game.players[i].token}</p>
     <h3 class="name">${game.players[i].name}</h3>
-    <p>Wins: <span id="score">${game.players[i].wins}</span></p>`;
+    <p class="wins">Wins: <span id="score">${game.players[i].wins}</span></p>
+    `;
   }
 }
 
@@ -164,6 +168,16 @@ function determineWinner(user, computer) {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function changeGame() {
+  hideDOMElement(fighterChoose);
+  showDOMElement(introChoose);
+  showDOMElement(classicVersion);
+  showDOMElement(advancedVersion);
+  // hideDOMElement(classicGame);
+  // hideDOMElement(advancedGame);
+  hideDOMElement(changeButton);
 }
 
 //HIDE/SHOW DOM ELEMENTS

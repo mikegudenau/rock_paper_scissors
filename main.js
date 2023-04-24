@@ -71,12 +71,12 @@ function getRandomIndex(array) {
 }
 
 function updateGameMode(event) {
-  if (event.target.className === "classic-version") {
+  if (event.target.id === "classicVersion") {
     game.gameMode = 'classic';
     showDOMElement(changeButton);
     showClassicGame();
     renderClassicGame()
-  } else if (event.target.className === "advanced-version") {
+  } else if (event.target.id === "advancedVersion") {
     game.gameMode = 'advanced';
     showDOMElement(changeButton);
     showAdvancedGame();

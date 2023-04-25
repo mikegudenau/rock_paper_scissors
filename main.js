@@ -16,7 +16,7 @@ var advancedGame = document.querySelector(".advanced-game");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector(".version-wrapper");
- 
+
 window.addEventListener("load", renderPlayerData);
 
 versionWrapper.addEventListener("click", function (event) {
@@ -121,7 +121,7 @@ function renderAdvancedGame() {
       <img class="icon" id="earth" src="./icons/earth.svg" alt="earth" />
       <img class="icon" id="metal" src="./icons/metal.svg" alt="metal" />
     <div>
-    `
+   `;
 }
 
 function renderResetBoard() {
@@ -177,7 +177,6 @@ function changeGame() {
   showDOMElement(classicVersion);
   showDOMElement(advancedVersion);
   hideDOMElement(changeButton);
-  
 }
 
 function showDOMElement(element) {

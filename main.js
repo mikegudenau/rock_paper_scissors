@@ -56,6 +56,7 @@ function fight(event) {
   findWinner();
   renderChosenFighter();
   renderPlayerData();
+  setTimeout(renderResetBoard, 2000);
   globalTimer = setTimeout(renderResetBoard, 2000);
 }
 

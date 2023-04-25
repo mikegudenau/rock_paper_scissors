@@ -16,6 +16,7 @@ var advancedGame = document.querySelector(".advanced-game");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector(".version-wrapper");
+var globalTimer;
  
 window.addEventListener("load", renderPlayerData);
 
@@ -55,7 +56,8 @@ function fight(event) {
   findWinner();
   renderChosenFighter();
   renderPlayerData();
-  setTimeout(renderResetBoard, 750);
+  setTimeout(renderResetBoard, 2000);
+  globalTimer = setTimeout(renderResetBoard, 2000);
 }
 
 function getRandomIndex(array) {
@@ -172,6 +174,7 @@ function determineWinner(user, computer) {
 
 function changeGame() {
   icons.innerHTML = '';
+  clearTimeout(globalTimer);
   hideDOMElement(fighterChoose);
   showDOMElement(introChoose);
   showDOMElement(classicVersion);

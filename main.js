@@ -1,6 +1,6 @@
-// Global Variables
 var players = [createPlayer("Human", "🤵🏻‍♂️"), createPlayer("Computer", "🎮")];
 var game = createGame(players);
+
 var classicChoices = ["wood", "water", "fire"];
 var advancedChoices = ["metal", "earth", "wood", "water", "fire"];
 var introChoose = document.querySelector(".intro-choose");
@@ -9,25 +9,26 @@ var announceResult = document.querySelector(".announce-result");
 var icons = document.querySelector(".icons");
 var score = document.querySelectorAll("#score");
 var changeButton = document.querySelector(".change-button");
-var classicVersion = document.querySelector(".classic-version");
-var advancedVersion = document.querySelector(".advanced-version");
+var classicVersion = document.querySelector("#classicVersion");
+var advancedVersion = document.querySelector("#advancedVersion");
 var classicGame = document.querySelector(".classic-game");
 var advancedGame = document.querySelector(".advanced-game");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector(".version-wrapper");
 
-// Event Listeners
 window.addEventListener("load", renderPlayerData);
 versionWrapper.addEventListener("click", function (event) {
   updateGameMode(event);
 });
+
 gameBoard.addEventListener("click", function (event) {
   if (event.target.className === "icon") {
     takeTurn(event);
     fight(event);
   }
 });
+
 changeButton.addEventListener("click", changeGame);
 
 function createPlayer(name, token) {
@@ -53,7 +54,7 @@ function fight(event) {
   findWinner();
   renderChosenFighter();
   renderPlayerData();
-  setTimeout(renderResetBoard, 1000);
+  setTimeout(renderResetBoard, 2000);
 }
 
 function getRandomIndex(array) {

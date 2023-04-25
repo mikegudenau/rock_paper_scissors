@@ -23,7 +23,7 @@ This element Rock, Paper, Scissors game is a new twist on the classic game that 
 - Demonstrate understading of 
   - DRY Javascript
   - Event delegation
-- Relationship between the data model and them DOM
+- Relationship between the data model and them DOM 
 - Git workflow
 
 ## WINS + Challenges

@@ -23,8 +23,10 @@ versionWrapper.addEventListener("click", function (event) {
   updateGameMode(event);
 });
 gameBoard.addEventListener("click", function (event) {
-  fight(event);
-  takeTurn(event);
+  if (event.target.className === "icon") {
+    takeTurn(event);
+    fight(event);
+  }
 });
 changeButton.addEventListener("click", changeGame);
 
@@ -102,20 +104,20 @@ function renderPlayerData() {
 
 function renderClassicGame() {
   icons.innerHTML = `
-  <img id="wood" src="./icons/wood.svg" alt="wood" />
-  <img id="water" src="./icons/water.svg" alt="water" />
-  <img id="fire" src="icons/fire.svg" alt="fire" />
+  <img class="icon" id="wood" src="./icons/wood.svg" alt="wood" />
+  <img class="icon" id="water" src="./icons/water.svg" alt="water" />
+  <img class="icon" id="fire" src="icons/fire.svg" alt="fire" />
   `;
 }
 
 function renderAdvancedGame() {
   icons.innerHTML = `
-  <img id="wood" src="./icons/wood.svg" alt="wood" />
-  <img id="water" src="./icons/water.svg" alt="water" />
-  <img id="fire" src="icons/fire.svg" alt="fire" />
+  <img class="icon" id="wood" src="./icons/wood.svg" alt="wood" />
+  <img class="icon" id="water" src="./icons/water.svg" alt="water" />
+  <img class="icon" id="fire" src="icons/fire.svg" alt="fire" />
     <div>
-      <img id="earth" src="./icons/earth.svg" alt="earth" />
-      <img id="metal" src="./icons/metal.svg" alt="metal" />
+      <img class="icon" id="earth" src="./icons/earth.svg" alt="earth" />
+      <img class="icon" id="metal" src="./icons/metal.svg" alt="metal" />
     <div>
     `
 }

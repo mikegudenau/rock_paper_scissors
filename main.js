@@ -9,8 +9,8 @@ var announceResult = document.querySelector(".announce-result");
 var icons = document.querySelector(".icons");
 var score = document.querySelectorAll("#score");
 var changeButton = document.querySelector(".change-button");
-var classicVersion = document.querySelector(".classic-version");
-var advancedVersion = document.querySelector(".advanced-version");
+var classicVersion = document.querySelector("#classicVersion");
+var advancedVersion = document.querySelector("#advancedVersion");
 var classicGame = document.querySelector(".classic-game");
 var advancedGame = document.querySelector(".advanced-game");
 var playerContainer = document.querySelectorAll(".player-container");
@@ -20,6 +20,7 @@ var versionWrapper = document.querySelector(".version-wrapper");
 // Event Listeners
 window.addEventListener("load", renderPlayerData);
 versionWrapper.addEventListener("click", function (event) {
+  console.log(event.target);
   updateGameMode(event);
 });
 gameBoard.addEventListener("click", function (event) {

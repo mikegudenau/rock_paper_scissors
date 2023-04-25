@@ -17,26 +17,17 @@ h1 {
   margin: 15px 0 5px;;
 }
 
-h2 {
+h2, .announce-result {
   font-size: 48px;
 }
 
-h3 {
+h3, .wins {
   font-size: 36px;
 }
 
 .token {
   font-size: 40px;
-  margin: 0;
   padding-top: 40px;
-}
-
-.wins {
-  font-size: 36px;
-}
-
-.announce-result {
-  font-size: 48px;
 }
 
 .change-button {
@@ -83,7 +74,7 @@ h3 {
 }
 
 .classic:hover {
-  background-color:rgb(24, 123, 4);
+  background-color:rgb(25, 48, 4);
 }
 
 .advanced:hover {

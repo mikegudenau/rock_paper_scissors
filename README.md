@@ -11,7 +11,7 @@ This element Rock, Paper, Scissors game is a new twist on the classic game that 
 - Run open index.html in your terminal in order to view the project in a browser.
 
 ## Preview of the Application: 
-![Rock, paper, scissors](https://user-images.githubusercontent.com/116329342/234135135-941227e6-edbf-4811-aa55-88a7a6900edf.gif)
+![Rock, paper, scissors](https://user-images.githubusercontent.com/116329342/234141032-2bf1de43-659d-4218-9966-7839567a91d0.gif)
 
 ## Context:
 - Mod 1, Week 4 of Turing's [Front-End Curriculum](https://frontend.turing.edu/)

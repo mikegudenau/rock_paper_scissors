@@ -16,7 +16,7 @@ var advancedGame = document.querySelector(".advanced-game");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector(".version-wrapper");
- 
+
 window.addEventListener("load", renderPlayerData);
 
 versionWrapper.addEventListener("click", function (event) {
@@ -55,7 +55,7 @@ function fight(event) {
   findWinner();
   renderChosenFighter();
   renderPlayerData();
-  setTimeout(renderResetBoard, 500);
+  globalTimer = setTimeout(renderResetBoard, 500);
 }
 
 function getRandomIndex(array) {
@@ -121,7 +121,7 @@ function renderAdvancedGame() {
       <img class="icon" id="earth" src="./icons/earth.svg" alt="earth" />
       <img class="icon" id="metal" src="./icons/metal.svg" alt="metal" />
     <div>
-    `
+   `;
 }
 
 function renderResetBoard() {
@@ -177,7 +177,6 @@ function changeGame() {
   showDOMElement(classicVersion);
   showDOMElement(advancedVersion);
   hideDOMElement(changeButton);
-  
 }
 
 function showDOMElement(element) {

@@ -55,7 +55,7 @@ function fight(event) {
   findWinner();
   renderChosenFighter();
   renderPlayerData();
-  globalTimer = setTimeout(renderResetBoard, 500);
+  setTimeout(renderResetBoard, 500);
 }
 
 function getRandomIndex(array) {

@@ -16,8 +16,9 @@ var advancedGame = document.querySelector(".advanced-game");
 var playerContainer = document.querySelectorAll(".player-container");
 var gameBoard = document.querySelector(".gameboard");
 var versionWrapper = document.querySelector(".version-wrapper");
-
+ 
 window.addEventListener("load", renderPlayerData);
+
 versionWrapper.addEventListener("click", function (event) {
   updateGameMode(event);
 });
@@ -54,7 +55,7 @@ function fight(event) {
   findWinner();
   renderChosenFighter();
   renderPlayerData();
-  setTimeout(renderResetBoard, 2000);
+  setTimeout(renderResetBoard, 750);
 }
 
 function getRandomIndex(array) {
